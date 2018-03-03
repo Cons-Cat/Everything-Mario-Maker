@@ -7,18 +7,15 @@ var c_slope = collision_rectangle(bbox_left,bbox_bottom+1,bbox_right,bbox_bottom
 /*-------------------------------*/
 
 //Solid check
-if c_solid && c_solid.can_col = 1{
-	return false
+if c_solid && c_solid.can_col = 1 {
+	return false;
+} else if (cjt) && (add_y = 0) { //else if ((cjt) || (c_slope)) && (add_y == 0)
+	//Jumpthrough check
+	return false;
+} else if (c_slope) && (add_y = 0) {
+	//Slope check
+	return false;
+} else {
+	//No collision
+	return true;
 }
-
-//Jumpthrough check
-else if (cjt) && (add_y == 0) //else if ((cjt) || (c_slope)) && (add_y == 0)
-  return false
-  
-//Slope check
-else if (c_slope) && (add_y == 0)
-  return false
-  
-//No collision
-else
-  return true

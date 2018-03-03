@@ -1,7 +1,7 @@
 //Converts convenient indeces into an object ID
-if obj_tilegui_control.i[exVal] = 0{
+if obj_tilegui_control.i[exVal] = 0 {
     instance = obj_solidplace;
 }
-if obj_tilegui_control.i[exVal] = 1{
+if obj_tilegui_control.i[exVal] = 1 {
     instance = obj_mushroom;
 }

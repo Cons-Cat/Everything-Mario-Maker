@@ -7,51 +7,47 @@ editing = argument1;
 
 //---
 //Fake subpixel system
-if scr_decconv(abs(frac(c_hspeed))) != 0{
-    subpix_cap_h = scr_spdosc_timer(0)/scr_decconv(abs(frac(c_hspeed)));
+if scr_decconv(abs(frac(c_hspeed))) != 0 {
+	subpix_cap_h = scr_spdosc_timer(0)/scr_decconv(abs(frac(c_hspeed)));
 }
-if scr_decconv(abs(frac(c_vspeed))) != 0{
-    subpix_cap_v = scr_spdosc_timer(1)/scr_decconv(abs(frac(c_vspeed)));
+if scr_decconv(abs(frac(c_vspeed))) != 0 {
+	subpix_cap_v = scr_spdosc_timer(1)/scr_decconv(abs(frac(c_vspeed)));
 }
 
 subpix_cap_h = round(subpix_cap_h);
 subpix_cap_v = round(subpix_cap_v);
 
 //h
-if subpix_timer_h > 0
- {
- subpix_move_h = 0;
- subpix_timer_h--;
+if subpix_timer_h > 0 {
+	subpix_move_h = 0;
+	subpix_timer_h--;
  
- if subpix_timer_h > subpix_cap_h
- subpix_timer_h = subpix_cap_h;
- }
-
-else
- {
- if abs(frac(c_hspeed)) > 0
- subpix_move_h = sign(c_hspeed);
- 
- subpix_timer_h = subpix_cap_h;
- }
+	if subpix_timer_h > subpix_cap_h {
+		subpix_timer_h = subpix_cap_h;
+	}
+} else {
+	if abs(frac(c_hspeed)) > 0 {
+		subpix_move_h = sign(c_hspeed);
+	}
+	
+	subpix_timer_h = subpix_cap_h;
+}
  
 //v
-if subpix_timer_v > 0
- {
- subpix_move_v = 0;
- subpix_timer_v -= 1;
- 
- if subpix_timer_v > subpix_cap_v
- subpix_timer_v = subpix_cap_v;
- }
-
-else
- {
- if abs(frac(c_vspeed)) > 0
- subpix_move_v = sign(c_vspeed);
- 
- subpix_timer_v = subpix_cap_v;
- }
+if subpix_timer_v > 0 {
+	subpix_move_v = 0;
+	subpix_timer_v -= 1;
+	
+	if subpix_timer_v > subpix_cap_v {
+		subpix_timer_v = subpix_cap_v;
+	}
+} else {
+	if abs(frac(c_vspeed)) > 0 {
+		subpix_move_v = sign(c_vspeed);
+	}
+	
+	subpix_timer_v = subpix_cap_v;
+}
 
 //---
 
@@ -65,14 +61,13 @@ add_x = c_hspeed+c_hspeed_misc+subpix_move_h+c_hspeed_slope;
 add_y = c_vspeed+c_vspeed_misc+subpix_move_v;
 
 //Gravity
-if !c_vspeed_fr && editing = 0 {
+if editing = 0 {
 	if c_vspeed < 4 * 8 {
 		c_vspeed += c_gravity;
 	} else {
 		c_vspeed = 4 * 8;
 	}
 }
-
 //Checks to see if the object is in the air
 if argument0 = 1 {
 	in_air = scr_inair();

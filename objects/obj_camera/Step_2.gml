@@ -116,3 +116,4 @@ instance_activate_region(camera_get_view_x(camera)-8*8,camera_get_view_y(camera)
 instance_activate_object(obj_player);
 instance_activate_object(obj_gui);
 instance_activate_object(obj_stickynote);
+instance_activate_object(obj_tilegui_control);
